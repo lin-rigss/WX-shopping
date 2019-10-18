@@ -1,0 +1,18 @@
+<!--components/w-swiper/w-swiper.wxml-->
+<!-- circular  是否无缝滚动
+     autoplay  是否自动轮播
+     interval  设置滚动时间
+ -->
+<swiper indicator-dots='true' 
+        indicator-active-color='#ff5777'
+        autoplay='true'
+        circular='true'  
+        interval='3000'
+        class='swiper'>
+  <block wx:for="{{images}}" wx:key="index">
+    <swiper-item>
+                      <!--mode='widthFix' 根据图片的大小显示正确的比例  -->
+      <image class="swiper-image" src="{{item}}" mode='widthFix'/>
+    </swiper-item>
+  </block>
+</swiper>

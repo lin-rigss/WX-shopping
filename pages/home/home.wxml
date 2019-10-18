@@ -1,0 +1,31 @@
+<!--pages/home/home.wxml-->
+<view class='home'>
+  <view hidden='{{!showTabControl}}'>
+    <w-tab-control class='tab-control-temp' 
+                 titles="{{titles}}" 
+                 bind:tabclick="tabClick"/>
+  </view>
+  
+  <scroll-view class='content' 
+              scroll-y 
+              bindscrolltolower="loadMore"
+              scroll-with-animation="true"
+              scroll-top="{{topPosition}}"
+              bindscroll="scrollPosition">
+
+    <!-- 进轮播图进行了组件的封装 -->
+    <w-swiper images="{{banners}}"/>
+
+    <!-- 推荐数据的显示 -->
+    <w-recommend recommends="{{recommends}}" bind:imageLoad="onImageLoad"/>
+
+    <w-feature/>
+
+    <!-- 选项卡 -->
+    <w-tab-control class='tab-control' titles="{{titles}}" bind:tabclick="tabClick"/>
+
+    <!-- 选项卡内容   根据点击的哪个类型 来获取相对应的数据展示  -->
+    <w-goods goodslist="{{goods[currentType].list}}"/>
+    <w-back-top bindtap="onBackTop" wx:if="{{showBackTop}}"/>
+  </scroll-view> 
+</view>
